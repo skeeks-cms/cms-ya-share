@@ -127,16 +127,6 @@ class YaShareWidget extends WidgetRenderable
     /**
      * @return string
      */
-    public function getJsonOptions()
-    {
-        return Json::encode([
-            'services' => implode(',', (array) $this->services),
-            'typeView' => (array) $this->typeView,
-        ]);
-    }
-    /**
-     * @return string
-     */
     protected function _run()
     {
         YaShAsset::register($this->view);

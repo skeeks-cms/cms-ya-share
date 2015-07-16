@@ -14,8 +14,8 @@ use skeeks\cms\modules\admin\widgets\form\ActiveFormUseTab as ActiveForm;
     <?= $form->fieldSetEnd(); ?>
 
     <?= $form->fieldSet('Параметр виджета'); ?>
-        <?= $form->field($model, 'yashareQuickServices')->checkboxList(\skeeks\cms\yandex\share\widget\YaShareWidget::$possibleService)->hint('Выберите сервисы, иконки которых будут стоять рядом с кнопкой:'); ?>
-        <?= $form->field($model, 'yashareType')->radioList(\skeeks\cms\yandex\share\widget\YaShareWidget::$possibleType); ?>
+        <?= $form->field($model, 'services')->checkboxList(\skeeks\cms\yandex\share\widget\YaShareWidget::$possibleService)->hint('Выберите сервисы, иконки которых будут стоять рядом с кнопкой:'); ?>
+        <?= $form->field($model, 'typeView')->radioList(\skeeks\cms\yandex\share\widget\YaShareWidget::$possibleTypes); ?>
 
 <?= $form->fieldSetEnd(); ?>
 

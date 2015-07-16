@@ -13,7 +13,7 @@ use yii\web\AssetBundle;
  */
 class YaShAsset extends AssetBundle
 {
-    public $sourcePath = '@skeeks/yandex/share/widget';
+    //public $sourcePath = '@skeeks/cms/yandex/share/widget';
 
     public $js = [
         '//yastatic.net/share/share.js'
