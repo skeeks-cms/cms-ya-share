@@ -26,7 +26,7 @@ php yii cms/update
 
 ```php
 
-<?= \skeeks\cms\vk\comments\YaShareWidget::widget([
+<?= \skeeks\cms\yandex\share\widget\YaShareWidget::widget([
     'namespace' => 'YaShareWidget-main',
     'apiId'     => 4982033
 ]); ?>
