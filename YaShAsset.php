@@ -8,7 +8,7 @@
 namespace skeeks\cms\yandex\share\widget;
 use yii\web\AssetBundle;
 /**
- * Class VkAsset
+ * Class YaShAsset
  * @package skeeks\cms\assets
  */
 class YaShAsset extends AssetBundle
