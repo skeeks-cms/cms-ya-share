@@ -16,5 +16,5 @@
 JS
     );
     ?>
-    <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="<?= $widget->typeView; ?>" data-yashareQuickServices="<?= $widget->services; ?>"></div>
+    <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="<?= $widget->typeView; ?>" data-yashareQuickServices="<?= implode(',', $widget->services); ?>" <?= $widget->typeView == \skeeks\cms\yandex\share\widget\YaShareWidget::TYPE_BUTTON ? 'data-yashareTheme="counter"' : '' ?> ></div>
 
