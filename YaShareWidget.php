@@ -11,6 +11,7 @@ use skeeks\cms\base\WidgetRenderable;
 use skeeks\cms\components\Cms;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
+use yii\widgets\ActiveForm;
 
 /**
  * @property string $jsonOptions
@@ -122,6 +123,14 @@ class YaShareWidget extends WidgetRenderable
             [['typeView'], 'string'],
             [['typeView'], 'required']
         ]);
+    }
+
+    public function renderConfigForm(ActiveForm $form)
+    {
+        echo \Yii::$app->view->renderFile(__DIR__ . '/views/_settingsForm.php', [
+            'form'  => $form,
+            'model' => $this
+        ], $this);
     }
 
     /**
