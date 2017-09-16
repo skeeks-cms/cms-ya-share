@@ -16,6 +16,6 @@ class YaShAsset extends AssetBundle
     //public $sourcePath = '@skeeks/cms/yandex/share/widget';
 
     public $js = [
-        '//yastatic.net/share/share.js'
+        'https://yastatic.net/share/share.js'
     ];
 }
