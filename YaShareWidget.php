@@ -14,6 +14,7 @@ use yii\helpers\Json;
 use yii\widgets\ActiveForm;
 
 /**
+ * @see https://tech.yandex.ru/share/doc/dg/add-docpage/
  * @property string $jsonOptions
  *
  * Class YaShareWidget
@@ -31,23 +32,12 @@ class YaShareWidget extends WidgetRenderable
     const SERVICE_MOIKRUG       = 'moikrug';
     const SERVICE_GPLUS         = 'gplus';
     const SERVICE_SURFINGBIRD   = 'surfingbird';
+    const SERVICE_WHATSAPP      = 'whatsapp';
+    const SERVICE_TELEGRAM      = 'telegram';
+    const SERVICE_SKYPE         = 'skype';
 
-    const TYPE_BUTTON   = 'button';
-    const TYPE_SMALL    = 'small';
-    const TYPE_LINK     = 'link';
-    const TYPE_ICON     = 'icon';
-    const TYPE_NONE     = 'none';
-
-    /**
-     * @var array
-     */
-    static public $possibleTypes = [
-        self::TYPE_BUTTON           => 'Кнопка',
-        self::TYPE_SMALL            => 'Счетчики',
-        self::TYPE_LINK             => 'Ссылка',
-        self::TYPE_ICON             => 'Иконки и меню',
-        self::TYPE_NONE             => 'Только иконки',
-    ];
+    const SIZE_SMALL        = 's';
+    const SIZE_BIG          = 'm';
 
     /**
      * @var array
@@ -63,16 +53,21 @@ class YaShareWidget extends WidgetRenderable
         self::SERVICE_MOIKRUG       => 'Мой круг',
         self::SERVICE_GPLUS         => 'Google+',
         self::SERVICE_SURFINGBIRD   => 'Surfingbird',
+        self::SERVICE_WHATSAPP      => 'Whatsapp',
+        self::SERVICE_TELEGRAM      => 'Telegram',
+        self::SERVICE_SKYPE         => 'Skype',
     ];
-
-
-
 
 
     /**
      * @var string
      */
-    public $typeView = self::TYPE_BUTTON;
+    public $size = self::SIZE_BIG;
+
+    /**
+     * @var bool
+     */
+    public $is_counter = false;
 
     /**
      * @var array
@@ -110,7 +105,8 @@ class YaShareWidget extends WidgetRenderable
         return array_merge(parent::attributeLabels(),
         [
             'services'        => 'Набор сервисов',
-            'typeView'        => 'Внешний вид блока',
+            'size'            => 'Размер',
+            'is_counter'            => 'Показывать счетчик',
         ]);
     }
 
@@ -120,8 +116,8 @@ class YaShareWidget extends WidgetRenderable
         [
             [['services'], 'safe'],
             [['services'], 'required'],
-            [['typeView'], 'string'],
-            [['typeView'], 'required']
+            [['size'], 'string'],
+            [['is_counter'], 'boolean'],
         ]);
     }
 

@@ -8,13 +8,10 @@
 /* @var $this yii\web\View */
 /* @var $widget \skeeks\cms\yandex\share\widget\YaShareWidget */
 ?>
-
-
-    <?
-    $this->registerJs(<<<JS
-
-JS
-    );
-    ?>
-    <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="<?= $widget->typeView; ?>" data-yashareQuickServices="<?= implode(',', $widget->services); ?>" <?= $widget->typeView == \skeeks\cms\yandex\share\widget\YaShareWidget::TYPE_BUTTON ? 'data-yashareTheme="counter"' : '' ?> ></div>
+<div class="ya-share2"
+     data-lang="ru"
+     data-size="<?= $widget->size; ?>"
+     data-services="<?= implode(',', $widget->services); ?>"
+    <?= $widget->is_counter ? 'data-counter=""' : '' ?>
+></div>
 

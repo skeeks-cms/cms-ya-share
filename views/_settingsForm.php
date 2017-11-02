@@ -13,7 +13,12 @@
 
 <?= $form->fieldSet('Параметр виджета'); ?>
     <?= $form->field($model, 'services')->checkboxList(\skeeks\cms\yandex\share\widget\YaShareWidget::$possibleService)->hint('Выберите сервисы, иконки которых будут стоять рядом с кнопкой:'); ?>
-    <?= $form->field($model, 'typeView')->radioList(\skeeks\cms\yandex\share\widget\YaShareWidget::$possibleTypes); ?>
+    <?= $form->field($model, 'is_counter')->checkbox(\Yii::$app->formatter->booleanFormat); ?>
+
+    <?= $form->field($model, 'size')->listBox([
+        \skeeks\cms\yandex\share\widget\YaShareWidget::SIZE_BIG => 'Большого размера',
+        \skeeks\cms\yandex\share\widget\YaShareWidget::SIZE_SMALL => 'Маленького размера'
+    ]); ?>
 
 <?= $form->fieldSetEnd(); ?>
 
