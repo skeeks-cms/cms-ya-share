@@ -132,9 +132,9 @@ class YaShareWidget extends WidgetRenderable
     /**
      * @return string
      */
-    protected function _run()
+    public function run()
     {
         YaShAsset::register($this->view);
-        return parent::_run();
+        return parent::run();
     }
 }
