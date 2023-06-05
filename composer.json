@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "skeeks/cms": "^5.4.0 || dev-master"
+        "skeeks/cms": "*"
     },
     "autoload": {
         "psr-4": {
