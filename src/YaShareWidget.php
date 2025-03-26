@@ -9,6 +9,10 @@ namespace skeeks\cms\yandex\share\widget;
 
 use skeeks\cms\base\WidgetRenderable;
 use skeeks\cms\components\Cms;
+use skeeks\cms\grid\BooleanColumn;
+use skeeks\yii2\form\fields\BoolField;
+use skeeks\yii2\form\fields\SelectField;
+use skeeks\yii2\form\fields\WidgetField;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\widgets\ActiveForm;
@@ -73,10 +77,9 @@ class YaShareWidget extends WidgetRenderable
      * @var array
      */
     public $services = [
+        self::SERVICE_TELEGRAM,
+        self::SERVICE_WHATSAPP,
         self::SERVICE_VK,
-        self::SERVICE_FB,
-        self::SERVICE_TWITTER,
-        self::SERVICE_OK,
     ];
 
 
@@ -88,16 +91,6 @@ class YaShareWidget extends WidgetRenderable
         ]);
     }
 
-    /**
-     * Файл с формой настроек, по умолчанию
-     *
-     * @return string
-     */
-    public function getConfigFormFile()
-    {
-        $class = new \ReflectionClass($this->className());
-        return dirname($class->getFileName()) . DIRECTORY_SEPARATOR . 'views/_settingsForm.php';
-    }
 
 
     public function attributeLabels()
@@ -107,6 +100,14 @@ class YaShareWidget extends WidgetRenderable
             'services'        => 'Набор сервисов',
             'size'            => 'Размер',
             'is_counter'            => 'Показывать счетчик',
+        ]);
+    }
+
+    public function attributeHints()
+    {
+        return array_merge(parent::attributeHints(),
+        [
+            'services'        => 'Выберите сервисы, иконки которых будут стоять рядом с кнопкой',
         ]);
     }
 
@@ -121,12 +122,29 @@ class YaShareWidget extends WidgetRenderable
         ]);
     }
 
-    public function renderConfigForm(ActiveForm $form)
+
+    /**
+     * @return array
+     */
+    public function getConfigFormFields()
     {
-        echo \Yii::$app->view->renderFile(__DIR__ . '/views/_settingsForm.php', [
-            'form'  => $form,
-            'model' => $this
-        ], $this);
+        return [
+            'services' => [
+                'class'       => SelectField::class,
+                'items' => static::$possibleService,
+                'multiple' => true,
+            ],
+            'is_counter' => [
+                'class'       => BoolField::class,
+            ],
+            'size' => [
+                'class'       => SelectField::class,
+                'items' => [
+                    static::SIZE_BIG => 'Большого размера',
+                    static::SIZE_SMALL => 'Маленького размера'
+                ],
+            ],
+        ];
     }
 
     /**
